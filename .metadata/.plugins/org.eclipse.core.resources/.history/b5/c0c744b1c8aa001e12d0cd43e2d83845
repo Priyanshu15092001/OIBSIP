@@ -1,0 +1,5 @@
+package com.ors.entity;
+
+public class Reservation {
+
+}

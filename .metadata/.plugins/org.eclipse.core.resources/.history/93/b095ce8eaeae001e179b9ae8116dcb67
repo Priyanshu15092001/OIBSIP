@@ -1,0 +1,57 @@
+package com.ngm;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Random rand=new Random();
+		int max=100,min=1;
+		int no_of_rounds=3;
+		
+		int score=0;
+		Scanner kb=new Scanner(System.in);
+		System.out.println("Rules for this game:");
+		System.out.println("1. There are 3 rounds.");
+		System.out.println("2. You can attempt upto 10 times per round.");
+		System.out.println("3. Your score will be displayed after all the rounds have been played.");
+		
+		for(int i=no_of_rounds;i>=1;i--)
+		{
+			int randomNum = rand.nextInt((max - min) + 1) + min;
+			int no_of_attempts=10;
+			
+			
+			while(no_of_attempts>0) {
+				
+			System.out.print("Guess the number: ");
+			int guess=kb.nextInt();
+			
+			if(guess==randomNum) {
+				score=score+no_of_attempts;
+				System.out.println("You have guessed the correct number in "+(10-no_of_attempts)+" attempts");
+				break;
+			}
+			else if(guess<randomNum){
+				System.out.println("Random number is greater than your guess number. Try one more time!");
+				
+				no_of_attempts--;
+			}
+			
+			else if(guess>randomNum)
+			{
+				System.out.println("Random number is lesser than your guess number. Try one more time!");
+				
+				no_of_attempts--;
+			}
+	
+			}
+			System.out.println("\nNext round start in 3..2..1...");
+		}
+		
+		System.out.println("\nYour final score is: "+ score+"/30");
+	}
+
+}
